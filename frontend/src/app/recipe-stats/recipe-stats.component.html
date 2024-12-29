@@ -1,0 +1,28 @@
+<!-- recipe-stats.component.html -->
+<div class="recipe-stats-container">
+  <!-- Section des statistiques générales -->
+  <div class="stats">
+    <h2>Statistiques des Recettes</h2>
+    <div class="stat-item">
+      <h3>Total des Recettes</h3>
+      <p>{{ totalRecipes }}</p>
+    </div>
+  </div>
+
+  <!-- Section du graphique des ingrédients les plus utilisés -->
+  <div class="chart-container">
+    <h3>Ingrédients les plus utilisés</h3>
+    <div *ngIf="mostUsedIngredientsData.length > 0">
+      <!-- Highcharts graphique -->
+      <highcharts-chart
+        [Highcharts]="Highcharts"
+        [options]="chartOptions"
+        style="width: 100%; height: 400px; display: block;">
+      </highcharts-chart>
+    </div>
+    <div *ngIf="mostUsedIngredientsData.length === 0">
+      <p>Pas de données disponibles pour les ingrédients.</p>
+    </div>
+  </div>
+
+</div>

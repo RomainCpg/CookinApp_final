@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+<!-- Conteneur principal -->
+<div class="container mt-5" *ngIf="recipe">
+
+  <!-- Section de la recette -->
+  <div class="card shadow-lg">
+    <div class="card-body">
+      <!-- Nom de la recette -->
+      <h1 class="card-title text-center text-primary">{{ recipe.name }}</h1>
+
+      <!-- Description -->
+      <p class="card-text text-muted">
+        {{ recipe.description }}
+      </p>
+
+      <h3>Ingrédients :</h3>
+      <ul class="list-group">
+        <li *ngFor="let ingredient of getIngredientEntries()" class="list-group-item d-flex justify-content-between align-items-center">
+          <span><strong>{{ ingredient.key }}</strong></span>
+          <span>{{ ingredient.value }}</span>
+        </li>
+      </ul>
+
+      <!-- Temps de préparation -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <p class="mb-0"><strong>Temps de préparation :</strong> {{ recipe.timeToPrepareInMinute }}</p>
+
+        <!-- Note -->
+        <div>
+          <strong>Note : </strong>
+          <span class="text-warning">
+            {{ recipe.averageRating }} / 5
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section des commentaires avec défilement -->
+  <div class="mt-4" style="max-height: 150px; overflow-y: scroll;">
+    <h3 class="h5">Commentaires :</h3>
+    <ul class="list-group" style="font-size: 0.875rem;">
+      <li *ngFor="let comment of comments" class="list-group-item" style="padding: 8px;">
+        <p class="mb-1" style="font-size: 0.85rem;">
+          <strong>{{ comment.authorId }}</strong> -
+          <em>{{ comment.datePosted | date:'short' }}</em>
+        </p>
+        <p class="mb-1" style="font-size: 0.85rem;">{{ comment.content }}</p>
+        <p class="mb-0" style="font-size: 0.85rem;"><strong>Note:</strong> {{ comment.rating }} / 5</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Formulaire d'ajout de commentaire -->
+  <div class="mt-4" style="font-size: 0.875rem;">
+    <h3 style="font-size: 1rem;">Ajouter un commentaire :</h3>
+    <form (ngSubmit)="submitComment()">
+      <div>
+        <label for="content" style="font-size: 0.85rem;">Commentaire</label>
+        <textarea id="content" [(ngModel)]="newComment.content" name="content" class="form-control" required style="font-size: 0.85rem; padding: 8px;"></textarea>
+      </div>
+      <div class="mt-1">
+        <label for="rating" style="font-size: 0.85rem;">Note</label>
+        <select id="rating" [(ngModel)]="newComment.rating" name="rating" class="form-control" required style="font-size: 0.85rem; padding: 8px;">
+          <option value="1">1 étoile</option>
+          <option value="2">2 étoiles</option>
+          <option value="3">3 étoiles</option>
+          <option value="4">4 étoiles</option>
+          <option value="5">5 étoiles</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mt-1" style="font-size: 0.85rem; padding: 6px 12px;">Ajouter</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- Section de chargement si la recette n'est pas encore disponible -->
+<div *ngIf="!recipe" class="text-center mt-5">
+  <p>Chargement de la recette...</p>
+</div>

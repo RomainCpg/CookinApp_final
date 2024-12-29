@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <!-- Card pour afficher les informations du compte -->
+  <div class="card shadow-lg">
+    <div class="card-body">
+      <h1 class="card-title text-center text-primary">Informations du Compte</h1>
+
+      <div class="row mt-4">
+        <!-- Nom complet -->
+        <div class="col-md-6 mb-3">
+          <h5><strong>Nom complet :</strong></h5>
+          <p>{{ account.firstName }} {{ account.lastName }}</p>
+        </div>
+
+        <!-- Pseudo -->
+        <div class="col-md-6 mb-3">
+          <h5><strong>Pseudo :</strong></h5>
+          <p>{{ account.pseudo }}</p>
+        </div>
+
+        <!-- Date de création -->
+        <div class="col-md-6 mb-3">
+          <h5><strong>Date de création :</strong></h5>
+          <p>{{ account.dateOfCreation | date:'longDate' }}</p>
+        </div>
+
+
+        <!-- Actions -->
+        <div class="text-center mt-4">
+          <button class="btn btn-warning me-2" (click)="editAccount()">Modifier</button>
+          <button class="btn btn-danger" (click)="deleteAccount()">Supprimer</button>
+          <button class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

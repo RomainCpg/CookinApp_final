@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <h2>Créer un compte</h2>
+  <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
+    <!-- Prénom -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="account.firstName"
+        required
+      />
+    </div>
+
+    <!-- Nom -->
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Nom</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="account.lastName"
+        required
+      />
+    </div>
+
+    <!-- Pseudo -->
+    <div class="mb-3">
+      <label for="pseudo" class="form-label">Pseudo</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pseudo"
+        name="pseudo"
+        [(ngModel)]="account.pseudo"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!accountForm.valid">
+      Créer un compte
+    </button>
+  </form>
+</div>

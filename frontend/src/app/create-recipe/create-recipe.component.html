@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="mt-5">
+    <h1 class="text-center text-primary">Créer une recette</h1>
+
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+    <!-- Nom de la recette -->
+    <div class="mb-2">
+      <label for="name" class="form-label">Nom de la recette</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="Entrez le nom de la recette"
+        [(ngModel)]="recipe.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <!-- Description -->
+    <div class="mb-2">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        placeholder="Entrez une description de la recette"
+        [(ngModel)]="recipe.description"
+        name="description"
+        rows="2"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Temps de préparation -->
+    <div class="mb-2">
+      <label for="prepTime" class="form-label">Temps de préparation (en minutes)</label>
+      <input
+        type="number"
+        id="prepTime"
+        class="form-control"
+        placeholder="Entrez le temps de préparation"
+        [(ngModel)]="recipe.prepTime"
+        name="prepTime"
+        required
+      />
+    </div>
+
+    <!-- Ingrédients -->
+    <div class="mb-2">
+      <label class="form-label">Ingrédients</label>
+      <div class="row">
+        <div
+          *ngFor="let ingredient of ingredients; let i = index"
+          class="col-md-4 mb-2 d-flex align-items-center">
+          <!-- Case à cocher -->
+          <input
+            type="checkbox"
+            [(ngModel)]="selectedIngredients[i].selected"
+            [name]="'ingredient' + i"
+            class="form-check-input me-2"
+          />
+          <!-- Nom de l'ingrédient -->
+          <label class="form-check-label me-auto">{{ ingredient.name }}</label>
+          <!-- Quantité -->
+          <input
+            type="number"
+            [(ngModel)]="selectedIngredients[i].quantity"
+            [name]="'quantity' + i"
+            class="form-control"
+            [disabled]="!selectedIngredients[i].selected"
+            placeholder="Qté"
+            min="1"
+            style="width: 70px;"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Boutons -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!recipeForm.form.valid">Créer la recette</button>
+    </div>
+  </form>
+</div>
