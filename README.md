@@ -1,6 +1,11 @@
 # 🍳 CookingApp
 
+## Lien du projet : https://github.com/RomainCpg/CookinApp_final.git
+
 **Un endroit où retrouver vos recettes de cuisines !**
+
+Le projet a été fait par Morgane Cocuron ([morganecocuron](https://github.com/morganecocuron)) et Romain Champagne ([romaincpg](https://github.com/romaincpg)). 
+La majorité du projet est inspirée ce qui a été fait lors des TDs. 
 
 ---
 
@@ -41,14 +46,9 @@
 
 
 ## 🖼️ Aperçu de l'application :
-Il faudrait qu'on ajoute ici des screen voir une vidéo de démo de l'appli
+[[Vidéo de présentation]](https://vimeo.com/1042776239)
+
 
 ---
 
-
-##  Note :
-Le projet a été fait par Morgane Cocuron et Romain Champagne. 
-La majorité du projet est inspirée ce qui a été fait lors des TDs. 
-
----
 
